@@ -53,7 +53,7 @@ function App() {
       <div className="flex flex-col gap-y-5 items-center">
         <h1 className="text-white text-3xl font-bold">Welcome, Alejandro.</h1>
 
-        <form className="flex gap-2" target="_self">
+        <form className="flex gap-2" target="_blank">
           <input
             type="text"
             value={url}
@@ -68,7 +68,7 @@ function App() {
 
           <button
             type="submit"
-            onClick={() => window.open(normalizeUrl(url), "_self")}
+            onClick={() => window.open(normalizeUrl(url), "_blank")}
             className={
               "outline-1 outline-white/20 bg-neutral-800 px-4 py-2 rounded-4xl text-white hover:cursor-pointer" +
               (isCommand ? " ring-apple" : " ring-1 ring-white/20")

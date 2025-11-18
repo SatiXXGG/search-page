@@ -12,7 +12,7 @@
 /* RING estilo Apple, sin rotación del anillo */
 .ring-apple {
   position: relative;
-  border-radius: .1rem; /* coincide con rounded-3xl */
+  border-radius: 1.5rem; /* coincide con rounded-3xl */
 }
 
 .ring-apple::before {
