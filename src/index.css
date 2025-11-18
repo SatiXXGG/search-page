@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* CSS */
+:root{
+  --ring-size: 120px;
+  --ring-thickness: 10px;
+  --anim-duration: 2.2s;
+  --glow-color: rgba(255,255,255,0.06);
+  background-color: #000;
+}
+
+/* RING estilo Apple, sin rotación del anillo */
+.ring-apple {
+  position: relative;
+  border-radius: .1rem; /* coincide con rounded-3xl */
+}
+
+.ring-apple::before {
+  content: "";
+  position: absolute;
+  inset: -3px;               /* grosor hacia afuera */
+  border-radius: inherit;
+  padding: 3px;              /* grosor del anillo */
+  pointer-events: none;
+  z-index: 2;
+
+  background: conic-gradient(
+    #ff3b30,
+    #ff9500,
+    #ffcc00,
+    #34c759,
+    #5ac8fa,
+    #0a84ff,
+    #5856d6,
+    #ff2d55,
+    #ff3b30
+  );
+
+  background-size: 200% 200%; /* importante para que fluya */
+  animation: apple-flow 3s linear infinite;
+
+  /* máscara para dejar hueco en el centro */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* animación: mover el fondo en bucle, sin rotar */
+@keyframes apple-flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
