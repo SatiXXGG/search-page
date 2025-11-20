@@ -58,7 +58,7 @@ function App() {
         <h1 className={`${textColor} text-3xl font-bold`}>Welcome, Alejandro.</h1>
 
         <form
-          className="flex gap-2"
+          className="flex gap-2 md:flex-row flex-col"
           target="_blank"
           onSubmit={(e) => {
             e.preventDefault();
@@ -73,7 +73,7 @@ function App() {
               isDark
                 ? "bg-neutral-950 outline-white/20"
                 : "bg-gray-200 outline-black/20"
-            } px-3 py-2 ${textColor} w-96 rounded-3xl
+            } px-3 py-2 ${textColor} w-64 md:w-96 rounded-3xl
                outline-1
                transition-all duration-300 hover:cursor-help ${
                  isCommand ? "ring-apple" : "ring-1 ring-white/20"
@@ -88,7 +88,7 @@ function App() {
                 isDark
                   ? "bg-neutral-950 outline-white/20"
                   : "bg-gray-300 outline-black/20"
-              } px-4 py-2 rounded-4xl ${textColor} hover:cursor-pointer` +
+              } px-4 py-2 rounded-4xl ${textColor} hover:cursor-pointer md:w-auto w-23 mx-auto` +
               (isCommand ? " ring-apple" : " ring-1 ring-white/20")
             }
           >
@@ -96,7 +96,11 @@ function App() {
           </button>
         </form>
 
-        <hr className={`${isDark ? "bg-white/10" : "bg-gray-300"} w-[120%] h-0.5`} />
+        <hr
+          className={`${
+            isDark ? "bg-white/10" : "bg-gray-300"
+          } w-69 md:w-[120%] h-0.5`}
+        />
 
         <div className="flex gap-2">
           <Page
