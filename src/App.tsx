@@ -57,7 +57,14 @@ function App() {
       <div className="flex flex-col gap-y-5 items-center">
         <h1 className={`${textColor} text-3xl font-bold`}>Welcome, Alejandro.</h1>
 
-        <form className="flex gap-2" target="_blank">
+        <form
+          className="flex gap-2"
+          target="_blank"
+          onSubmit={(e) => {
+            e.preventDefault();
+            window.location.href = normalizeUrl(url);
+          }}
+        >
           <input
             type="text"
             value={url}
@@ -76,7 +83,6 @@ function App() {
 
           <button
             type="submit"
-            onClick={() => window.open(normalizeUrl(url), "_blank")}
             className={
               `outline-1  ${
                 isDark
