@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./index.css";
 import Page from "./props/page";
-import RFooter from "./props/bottom";
 import { useTheme } from "./ThemeProvider";
 
 const specialWords: { [key: string]: string } = {
