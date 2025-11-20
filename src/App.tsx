@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./index.css";
 import Page from "./props/page";
+import RFooter from "./props/bottom";
+import { useTheme } from "./ThemeProvider";
 
 const specialWords: { [key: string]: string } = {
   ai: "https://chatgpt.com/",
@@ -27,7 +29,9 @@ const specialWords: { [key: string]: string } = {
 function App() {
   const [url, setUrl] = useState("");
   const isCommand = url.toLocaleLowerCase() in specialWords;
-
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+  const textColor = isDark ? "text-white" : "text-black";
   function normalizeUrl(u: string) {
     if (u.toLowerCase() in specialWords) {
       return specialWords[u];
@@ -51,15 +55,19 @@ function App() {
   return (
     <main className="w-auto h-screen content-center justify-center flex items-center">
       <div className="flex flex-col gap-y-5 items-center">
-        <h1 className="text-white text-3xl font-bold">Welcome, Alejandro.</h1>
+        <h1 className={`${textColor} text-3xl font-bold`}>Welcome, Alejandro.</h1>
 
         <form className="flex gap-2" target="_blank">
           <input
             type="text"
             value={url}
             placeholder="Search or insert an URL"
-            className={`bg-neutral-950 px-3 py-2 text-white w-96 rounded-3xl
-               outline-1 outline-white/20
+            className={`${
+              isDark
+                ? "bg-neutral-950 outline-white/20"
+                : "bg-gray-200 outline-black/20"
+            } px-3 py-2 ${textColor} w-96 rounded-3xl
+               outline-1
                transition-all duration-300 hover:cursor-help ${
                  isCommand ? "ring-apple" : "ring-1 ring-white/20"
                }`}
@@ -70,7 +78,11 @@ function App() {
             type="submit"
             onClick={() => window.open(normalizeUrl(url), "_blank")}
             className={
-              "outline-1 outline-white/20 bg-neutral-800 px-4 py-2 rounded-4xl text-white hover:cursor-pointer" +
+              `outline-1  ${
+                isDark
+                  ? "bg-neutral-950 outline-white/20"
+                  : "bg-gray-300 outline-black/20"
+              } px-4 py-2 rounded-4xl ${textColor} hover:cursor-pointer` +
               (isCommand ? " ring-apple" : " ring-1 ring-white/20")
             }
           >
@@ -78,7 +90,7 @@ function App() {
           </button>
         </form>
 
-        <hr className="bg-white/10 w-[120%] h-0.5" />
+        <hr className={`${isDark ? "bg-white/10" : "bg-gray-300"} w-[120%] h-0.5`} />
 
         <div className="flex gap-2">
           <Page
@@ -100,7 +112,9 @@ function App() {
         </div>
 
         <footer>
-          <p className="text-white text-sm font-light ">Made with ❤️ by Alejandro</p>
+          <p className={` ${textColor} text-sm font-light `}>
+            Made with ❤️ by Alejandro
+          </p>
         </footer>
       </div>
     </main>

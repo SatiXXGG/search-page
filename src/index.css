@@ -5,8 +5,29 @@
   --ring-size: 120px;
   --ring-thickness: 10px;
   --anim-duration: 2.2s;
-  --glow-color: rgba(255,255,255,0.06);
-  background-color: #000;
+  --glow-color: rgba(255, 255, 255, 0.06);
+  background-color: #ffffff;
+}
+
+html.dark {
+  --ring-size: 120px;
+  --ring-thickness: 10px;
+  --anim-duration: 2.2s;
+  --glow-color: rgba(255,255,255,0.15);
+
+  background-color: #111;
+}
+
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  min-height: 50px;
 }
 
 /* RING estilo Apple, sin rotación del anillo */
